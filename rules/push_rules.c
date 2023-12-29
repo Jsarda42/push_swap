@@ -6,23 +6,21 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:47:17 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/28 14:32:51 by jsarda           ###   ########.fr       */
+/*   Updated: 2023/12/29 11:03:52 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-// function to push a stack into another stack
 int	push(t_list **stack_src, t_list **stack_dest)
 {
 	t_list	*current_src;
 	t_list	*current_dest;
 	t_list	*tmp;
 
-	if (ft_lstsize(*stack_src) == 0) // if the size 0 it mean we have an empty list
+	if (ft_lstsize(*stack_src) == 0)
 		return (-1);
 	current_src = *stack_src;
-	ft_printf("this is the current of the source%d", current_src->data);
 	current_dest = *stack_dest;
 	tmp = current_src;
 	current_src = current_src->next;

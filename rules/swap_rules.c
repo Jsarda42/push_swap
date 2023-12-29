@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:59:26 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/28 14:54:24 by jsarda           ###   ########.fr       */
+/*   Updated: 2023/12/29 11:04:19 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	swap(t_list **stack)
 	head = *stack;
 	next = head->next;
 	if (!head && !next)
-		error_message("Error occured while swapping!", stack);
+		error_message("Error", stack);
 	tmp_val = head->data;
 	tmp_index = head->index;
 	head->data = next->data;

@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:29:49 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/26 14:11:30 by jsarda           ###   ########.fr       */
+/*   Updated: 2023/12/29 11:44:08 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
+int	ft_strcmp(char *s1, char *s2);
 int					ft_isprint(int c);
 int					ft_isdigit(int c);
 int					ft_isascii(int c);

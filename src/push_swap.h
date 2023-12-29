@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 10:43:27 by jsarda           ###   ########.fr       */
+/*   Updated: 2023/12/29 11:48:50 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef struct s_list
 	int				index;
 	struct s_list	*next;
 }					t_list;
+
+typedef enum
+{
+	false = 0,
+	true = 1
+}					bool;
 
 // rules functions
 int					sa(t_list **stack_a);
@@ -46,7 +52,7 @@ t_list				*ft_lstnew(int value);
 // utils
 void				error_message(char *message, t_list **stack);
 int					nothing_to_be_done(t_list **stack);
-int					args_parsing(t_list **stack, int argc, char **argv);
+void				args_parsing(t_list **stack, int argc, char **argv);
 void				clear_list(t_list **stack);
 
 #endif
