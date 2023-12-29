@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 11:48:50 by jsarda           ###   ########.fr       */
+/*   Updated: 2023/12/29 13:32:52 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
+#include <limits.h>
 
 typedef struct s_list
 {

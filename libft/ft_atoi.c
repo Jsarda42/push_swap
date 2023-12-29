@@ -3,35 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:41:14 by jsarda            #+#    #+#             */
-/*   Updated: 2023/11/14 21:08:28 by juliensarda      ###   ########.fr       */
+/*   Updated: 2023/12/29 13:51:18 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	s;
-	int	res;
+	long	i;
+	long	number;
+	int		sign;
 
 	i = 0;
-	s = 1;
-	while (nptr[i] == '\t' || nptr[i] == '\n' || nptr[i] == '\v'
-		|| nptr[i] == '\f' || nptr[i] == ' ' || nptr[i] == '\r')
+	number = 0;
+	sign = 1;
+	while (str[i] && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
 		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (nptr[i] == '-')
-			s = -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	res = 0;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		res = (res * 10) + (nptr[i] - 48);
+		number = (number * 10) + (str[i] - '0');
 		i++;
 	}
-	return (res * s);
+	return (number * sign);
 }
