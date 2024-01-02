@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:35:02 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 10:19:26 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/02 10:32:03 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ void	clear_list(t_list **stack)
 		current = next_node;
 	}
 	*stack = NULL;
+}
+
+void	ft_free(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
 
 void	error_message(char *message, t_list **stack)

@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 13:32:52 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/02 14:48:08 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-#include <limits.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -23,11 +23,11 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef enum
+typedef enum s_bool
 {
 	false = 0,
 	true = 1
-}					bool;
+}					t_bool;
 
 // rules functions
 int					sa(t_list **stack_a);
@@ -53,5 +53,6 @@ void				error_message(char *message, t_list **stack);
 int					nothing_to_be_done(t_list **stack);
 void				args_parsing(t_list **stack, int argc, char **argv);
 void				clear_list(t_list **stack);
+void				ft_free(char **str);
 
 #endif
