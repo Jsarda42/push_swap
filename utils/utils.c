@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:35:02 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/02 10:32:03 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/03 17:16:21 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,34 @@ void	ft_free(char **str)
 	free(str);
 }
 
+void	free_stack(t_list **stack)
+{
+	t_list	*head;
+	t_list	*tmp;
+
+	head = *stack;
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+	free(stack);
+}
+
 void	error_message(char *message, t_list **stack)
 {
 	ft_putendl_fd(message, 1);
 	if (stack)
 		clear_list(stack);
-	exit(0);
+	exit(EXIT_FAILURE);
+}
+
+void	succes_message(char *message, t_list **stack)
+{
+	ft_putendl_fd(message, 1);
+	free_stack(stack);
+	exit(EXIT_SUCCESS);
 }
 
 int	nothing_to_be_done(t_list **stack)

@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 10:17:07 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/02 14:48:39 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/03 17:40:05 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ static t_bool	is_valid_int(char *arg)
 		i++;
 	while (arg[i])
 	{
+		if (arg[i] == ' ')
+			i++;
 		if (!ft_isdigit(arg[i]))
 			return (false);
 		i++;
 	}
-	num = ft_atoi(arg);
+	num = ft_atocoi(arg);
 	if (num > INT_MAX || num < INT_MIN)
 		return (false);
 	arg++;
@@ -37,20 +39,25 @@ static t_bool	is_duplicate(char **argv)
 {
 	int	i;
 	int	j;
-	int	num_i;
-	int	num_j;
 
 	i = 0;
+	int num_i, num_j;
 	while (argv[i])
 	{
-		num_i = ft_atoi(argv[i]);
-		j = i + 1;
-		while (argv[j])
+		if (is_valid_int(argv[i]))
 		{
-			num_j = ft_atoi(argv[j]);
-			if (num_i == num_j)
-				return (true);
-			j++;
+			num_i = ft_atocoi(argv[i]);
+			j = i + 1;
+			while (argv[j])
+			{
+				if (is_valid_int(argv[j]))
+				{
+					num_j = ft_atocoi(argv[j]);
+					if (num_i == num_j)
+						return (true);
+				}
+				j++;
+			}
 		}
 		i++;
 	}
@@ -70,6 +77,8 @@ void	args_parsing(t_list **stack, int argc, char **argv)
 	int		i;
 
 	i = 0;
+	if (argc < 2)
+		error_message("Error : Arguments need to be atleast two.", stack);
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
@@ -79,8 +88,6 @@ void	args_parsing(t_list **stack, int argc, char **argv)
 	}
 	while (args[i])
 	{
-		if (argc < 2)
-			error_message("Error : Arguments need to be atleast two.", stack);
 		if (is_duplicate(args))
 			free_args(argc, stack, args, "Error : Duplicate numbers detected.");
 		if (!is_valid_int(args[i]))

@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/02 14:48:08 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/03 16:42:54 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ t_list				*ft_lstnew(int value);
 
 // utils
 void				error_message(char *message, t_list **stack);
+void				succes_message(char *message, t_list **stack);
 int					nothing_to_be_done(t_list **stack);
 void				args_parsing(t_list **stack, int argc, char **argv);
 void				clear_list(t_list **stack);
 void				ft_free(char **str);
+void				free_stack(t_list **stack);
 
+// sort function
+void				sort_simple_cases(int argc, t_list **stack_a);
 #endif
