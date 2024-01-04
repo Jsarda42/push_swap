@@ -6,20 +6,13 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:59:26 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 11:04:19 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 10:47:02 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-// function to swap the first node with the second node
-// if the size of the list is smaller than 2this mean the list only have 1 node
-// we initialise the head
-// we initialise next
-// we store the data of the head inside a temporary variable
-// we store the index inside of a temp variable
-// then we swap the data and index of the head and the next
-int	swap(t_list **stack)
+static int	swap(t_list **stack)
 {
 	t_list	*head;
 	t_list	*next;
@@ -40,10 +33,6 @@ int	swap(t_list **stack)
 	next->index = tmp_index;
 	return (0);
 }
-// sa and sb functions will swap inside of their
-// respective stack using our swap function
-// we then use the function putendl_fd to write
-// the action we made to the fd choosen follow by a \n
 
 int	sa(t_list **stack_a)
 {
@@ -60,8 +49,6 @@ int	sb(t_list **stack_b)
 	ft_putendl_fd("sb", 1);
 	return (0);
 }
-// ss function will do this for both stack a and b
-// we making sur both list have 2 elements before swapping them
 
 int	ss(t_list **stack_a, t_list **stack_b)
 {

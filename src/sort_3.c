@@ -1,46 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_simple_cases.c                                :+:      :+:    :+:   */
+/*   sort_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 11:27:59 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/03 16:46:16 by jsarda           ###   ########.fr       */
+/*   Created: 2024/01/04 12:19:24 by jsarda            #+#    #+#             */
+/*   Updated: 2024/01/04 12:19:50 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_min(t_list *stack)
-{
-	int	i;
-
-	i = stack->data;
-	while (stack)
-	{
-		if (stack->data < i)
-			i = stack->data;
-		stack = stack->next;
-	}
-	return (i);
-}
-
-static int	get_max(t_list *stack)
-{
-	int	i;
-
-	i = stack->data;
-	while (stack)
-	{
-		if (stack->data > i)
-			i = stack->data;
-		stack = stack->next;
-	}
-	return (i);
-}
-
-static void	sort_3(t_list **stack_a)
+void	sort_3(t_list **stack_a)
 {
 	if (get_min(*stack_a) == (*stack_a)->data)
 	{
@@ -50,21 +22,14 @@ static void	sort_3(t_list **stack_a)
 	else if (get_max(*stack_a) == (*stack_a)->data)
 	{
 		ra(stack_a);
-		sa(stack_a);
+		if (!is_sorted(*stack_a))
+			sa(stack_a);
 	}
 	else
 	{
-
+		if (ft_find_index(*stack_a, get_max(*stack_a)) == 1)
+			rra(stack_a);
+		else
+			sa(stack_a);
 	}
 }
-
-void	sort_simple_cases(int argc, t_list **stack_a)
-{
-	if (argc == 4)
-		sort_3(stack_a);
-}
-
-// 3 use only 2 action
-// 5
-// 100
-// 500

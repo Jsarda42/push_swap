@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/03 16:42:54 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 12:51:41 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,22 @@ t_list				*ft_lstnew(int value);
 
 // utils
 void				error_message(char *message, t_list **stack);
-void				succes_message(char *message, t_list **stack);
-int					nothing_to_be_done(t_list **stack);
+void				succes_message(char *message, t_list **stack_a,
+						t_list **stack_b);
 void				args_parsing(t_list **stack, int argc, char **argv);
+t_bool				is_sorted(t_list *stack_a);
+int					ft_find_index(t_list *stack, int nbr);
+int					get_max(t_list *stack);
+int					get_min(t_list *stack);
+
+// free function
 void				clear_list(t_list **stack);
 void				ft_free(char **str);
 void				free_stack(t_list **stack);
+void				free_args(int argc, t_list **stack, char **args,
+						char *message);
 
 // sort function
-void				sort_simple_cases(int argc, t_list **stack_a);
+void				sort_3(t_list **stack_a);
+void				sort(t_list **stack_a, t_list **stack_b);
 #endif

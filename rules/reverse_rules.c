@@ -6,18 +6,13 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:11:09 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 09:51:11 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 10:46:22 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-// same has the rotate but this time we rotate the last node with the first node
-// to do this we use ft_lstlast to store the last node inside of last
-// we define new_last to be the first node of our stack
-// then we loop the new_last until we reach the last node of the list
-// and set the next to NULL then we add the last to the front of the node
-int	reverse_rotate(t_list **stack)
+static int	reverse_rotate(t_list **stack)
 {
 	t_list	*last;
 	t_list	*new_last;

@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 10:17:07 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/03 17:40:05 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 15:23:57 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ static t_bool	is_duplicate(char **argv)
 {
 	int	i;
 	int	j;
+	int	num_i;
+	int	num_j;
 
-	i = 0;
-	int num_i, num_j;
-	while (argv[i])
+	i = -1;
+	while (argv[++i])
 	{
 		if (is_valid_int(argv[i]))
 		{
@@ -59,16 +60,8 @@ static t_bool	is_duplicate(char **argv)
 				j++;
 			}
 		}
-		i++;
 	}
 	return (false);
-}
-
-static void	free_args(int argc, t_list **stack, char **args, char *message)
-{
-	if (argc == 2)
-		ft_free(args);
-	error_message(message, stack);
 }
 
 void	args_parsing(t_list **stack, int argc, char **argv)

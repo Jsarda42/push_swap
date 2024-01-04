@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:08:36 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 10:19:19 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 12:50:49 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,12 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	new->next = *lst;
 	*lst = new;
 }
+
 t_list	*ft_lstnew(int data)
 {
 	t_list	*new;
 
-	new = (t_list *) malloc(sizeof(*new));
+	new = (t_list *)malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
 	new->data = data;

@@ -6,80 +6,65 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:35:02 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/03 17:16:21 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 12:52:02 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-void	clear_list(t_list **stack)
+t_bool	is_sorted(t_list *stack_a)
 {
-	t_list	*current;
-	t_list	*next_node;
+	int	i;
 
-	current = *stack;
-	while (current)
+	i = stack_a->data;
+	while (stack_a)
 	{
-		next_node = current->next;
-		free(current);
-		current = next_node;
+		if (i > stack_a->data)
+			return (false);
+		i = stack_a->data;
+		stack_a = stack_a->next;
 	}
-	*stack = NULL;
+	return (true);
 }
 
-void	ft_free(char **str)
+int	ft_find_index(t_list *stack, int nbr)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (stack->data != nbr)
 	{
-		free(str[i]);
 		i++;
+		stack = stack->next;
 	}
-	free(str);
+	stack->index = 0;
+	return (i);
 }
 
-void	free_stack(t_list **stack)
+int	get_min(t_list *stack)
 {
-	t_list	*head;
-	t_list	*tmp;
+	int	i;
 
-	head = *stack;
-	while (head)
+	i = stack->data;
+	while (stack)
 	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
+		if (stack->data < i)
+			i = stack->data;
+		stack = stack->next;
 	}
-	free(stack);
+	return (i);
 }
 
-void	error_message(char *message, t_list **stack)
+int	get_max(t_list *stack)
 {
-	ft_putendl_fd(message, 1);
-	if (stack)
-		clear_list(stack);
-	exit(EXIT_FAILURE);
-}
+	int	i;
 
-void	succes_message(char *message, t_list **stack)
-{
-	ft_putendl_fd(message, 1);
-	free_stack(stack);
-	exit(EXIT_SUCCESS);
-}
-
-int	nothing_to_be_done(t_list **stack)
-{
-	t_list	*current;
-
-	current = *stack;
-	while (current && current->next)
+	i = stack->data;
+	while (stack)
 	{
-		if (current->data > current->next->data)
-			return (0);
-		current = current->next;
+		if (stack->data > i)
+			i = stack->data;
+		stack = stack->next;
 	}
-	return (1);
+	return (i);
 }

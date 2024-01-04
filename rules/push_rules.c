@@ -6,13 +6,13 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:47:17 by jsarda            #+#    #+#             */
-/*   Updated: 2023/12/29 11:03:52 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 10:46:08 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-int	push(t_list **stack_src, t_list **stack_dest)
+static int	push(t_list **stack_src, t_list **stack_dest)
 {
 	t_list	*current_src;
 	t_list	*current_dest;

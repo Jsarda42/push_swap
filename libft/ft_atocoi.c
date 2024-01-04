@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:41:14 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/03 14:51:03 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/04 13:53:05 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,8 @@ static long	ft_atoi(const char *str, int sign)
 	number = 0;
 	while (ft_isdigit(*str))
 	{
-		if (number > (LONG_MAX - (*str - '0')) / 10)
-		{
-			if (sign == 1)
-				return (LONG_MAX);
-			else
-				return (LONG_MIN);
-		}
+		if (number > (INT_MAX - (*str - '0')) / 10)
+			return (2147483648);
 		number = (number * 10) + (*str - '0');
 		str++;
 	}
