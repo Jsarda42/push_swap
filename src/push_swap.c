@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:17:35 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/04 12:57:55 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/05 15:49:29 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 {
 	t_list	**stack_a;
 	t_list	**stack_b;
-	t_list	*tmp;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -50,23 +49,6 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
-	tmp = *stack_a;
-	while (tmp)
-	{
-		ft_printf("this is stack_a before :%d\n", tmp->data);
-		tmp = tmp->next;
-	}
-	if (!is_sorted(*stack_a))
-		sort(stack_a, stack_b);
-	tmp = *stack_a;
-	while (tmp)
-	{
-		ft_printf("this is stack_a after :%d\n", tmp->data);
-		tmp = tmp->next;
-	}
-	if (is_sorted(*stack_a))
-		succes_message("OK", stack_a, stack_b);
-	else
-		succes_message("KO", stack_a, stack_b);
+	sort(stack_a, stack_b);
 	return (0);
 }
