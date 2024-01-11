@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:21:16 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/04 09:22:33 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/11 12:25:34 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,4 @@ void	error_message(char *message, t_list **stack)
 	if (stack)
 		clear_list(stack);
 	exit(EXIT_FAILURE);
-}
-
-void	succes_message(char *message, t_list **stack_a, t_list **stack_b)
-{
-	ft_putendl_fd(message, 1);
-	free_stack(stack_a);
-	free_stack(stack_b);
-	exit(EXIT_SUCCESS);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_3.c                                           :+:      :+:    :+:   */
+/*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 12:19:24 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/05 16:03:50 by jsarda           ###   ########.fr       */
+/*   Created: 2024/01/11 11:48:39 by jsarda            #+#    #+#             */
+/*   Updated: 2024/01/11 12:27:31 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,13 @@
 
 void	sort_3(t_list **stack_a)
 {
-	if (get_min(*stack_a) == (*stack_a)->data)
-	{
-		rra(stack_a);
-		sa(stack_a);
-	}
-	else if (get_max(*stack_a) == (*stack_a)->data)
-	{
-		ra(stack_a);
-		if (!is_sorted(*stack_a))
-			sa(stack_a);
-	}
-	else
-	{
-		if (ft_find_index(*stack_a, get_max(*stack_a)) == 1)
-			rra(stack_a);
-		else
-			sa(stack_a);
-	}
-}
+	int	biggest;
 
+	biggest = get_max(*stack_a);
+	if ((*stack_a)->data == biggest)
+		ra(stack_a);
+	else if ((*stack_a)->next->data == biggest)
+		rra(stack_a);
+	if ((*stack_a)->data > (*stack_a)->next->data)
+		sa(stack_a);
+}

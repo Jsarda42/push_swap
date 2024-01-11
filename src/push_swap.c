@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:17:35 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/05 15:49:29 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/10 14:15:26 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
-	sort(stack_a, stack_b);
+	if (is_sorted(*stack_a))
+	{
+		clear_list(stack_a);
+		clear_list(stack_b);
+	}
+	else
+		sort(stack_a, stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }
