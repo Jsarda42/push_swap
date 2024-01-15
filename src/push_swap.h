@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/11 12:55:43 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/15 14:29:55 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void				args_parsing(t_list **stack, int argc, char **argv);
 t_bool				is_sorted(t_list *stack_a);
 int					get_max(t_list *stack);
 int					get_min(t_list *stack);
+int	get_median(t_list **stack);
 
 // free function
 void				clear_list(t_list **stack);
@@ -65,6 +66,8 @@ void				free_args(int argc, t_list **stack, char **args,
 // sort function
 void				sort_3(t_list **stack_a);
 void				sort(t_list **stack_a, t_list **stack_b);
+void				current_index(t_list **stack);
+t_list				*cheapest_in_a(t_list **stack_a);
 
 // test need to remove it
 void				print_stack(t_list *stack);
