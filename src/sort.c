@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:27:59 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/16 18:21:52 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/16 18:22:45 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	sort(t_list **stack_a, t_list **stack_b)
 			stack_b_size++;
 		}
 		push_till_3(stack_a, stack_b);
+		sort_3(stack_a);
 	}
 }
