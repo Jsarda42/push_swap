@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:35:02 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/11 12:55:39 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/16 18:05:53 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,25 @@ int	get_max(t_list *stack)
 		stack = stack->next;
 	}
 	return (i);
+}
+
+int	get_median(t_list **stack)
+{
+	int	median;
+
+	return (median = ((ft_lstsize(*stack) / 2) + (ft_lstsize(*stack) % 2)));
+}
+
+void	current_index(t_list **stack)
+{
+	t_list	*current;
+
+	current = *stack;
+	current->index = 1;
+	while (current)
+	{
+		if (current->next)
+			current->next->index = current->index + 1;
+		current = current->next;
+	}
 }
