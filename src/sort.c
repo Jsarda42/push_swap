@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:27:59 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/16 18:19:28 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/16 18:21:52 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	push_2_to_b(t_list **stack_a, t_list **stack_b)
 
 void	push_till_3(t_list **stack_a, t_list **stack_b)
 {
-	// as long as there is less more than 3 nodes in stack a
+	// as long as there is more than 3 nodes in stack a
 	// i will push to b
 	// i will push the cheapest node using my function cheapest node
 	// that is returning the cheapest node to push
