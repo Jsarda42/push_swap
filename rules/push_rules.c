@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:47:17 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/04 10:46:08 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/17 15:31:49 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	pa(t_list **stack_b, t_list **stack_a)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
+	current_index(stack_b);
+	current_index(stack_a);
 	ft_putendl_fd("pa", 1);
 	return (0);
 }
@@ -51,6 +53,8 @@ int	pb(t_list **stack_a, t_list **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
+	current_index(stack_b);
+	current_index(stack_a);
 	ft_putendl_fd("pb", 1);
 	return (0);
 }

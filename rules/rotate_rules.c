@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 10:24:18 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/04 10:46:43 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/17 11:52:54 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ra(t_list **stack_a)
 {
 	if (rotate(stack_a) == -1)
 		return (-1);
+	current_index(stack_a);
 	ft_putendl_fd("ra", 1);
 	return (0);
 }
@@ -37,6 +38,7 @@ int	rb(t_list **stack_b)
 {
 	if (rotate(stack_b) == -1)
 		return (-1);
+	current_index(stack_b);
 	ft_putendl_fd("rb", 1);
 	return (0);
 }
@@ -45,6 +47,8 @@ int	rr(t_list **stack_a, t_list **stack_b)
 {
 	if (rotate(stack_a) == -1 || rotate(stack_b) == -1)
 		return (-1);
+	current_index(stack_a);
+	current_index(stack_b);
 	ft_putendl_fd("rr", 1);
 	return (0);
 }

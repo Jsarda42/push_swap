@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/16 18:09:07 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/17 15:31:54 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,7 @@ void				free_args(int argc, t_list **stack, char **args,
 void				sort_3(t_list **stack_a);
 void				sort(t_list **stack_a, t_list **stack_b);
 void				current_index(t_list **stack);
-int					move_cost_in_stack_a(t_list **stack, int median,
-						int stack_size);
-int					move_cost_in_stack_b(t_list **stack_b, t_list *target);
-t_list				*cheapest_in_a(t_list **stack_a);
-
+t_list				*cheapest_node(t_list **stack_a, t_list **stack_b, int stack_size_a, int stack_b_size);
 // test need to remove it
 void				print_stack(t_list *stack);
 
