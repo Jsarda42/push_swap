@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_target.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:07:21 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/17 15:00:34 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/18 14:34:05 by juliensarda      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ t_list	*get_target(int current_a_data, t_list **stack_b)
 
 	target = NULL;
 	current_b = *stack_b;
-	fit = current_b->data;
+	if (current_b)
+		fit = current_b->data;
+	else
+		fit = 0;
 	while (current_b)
 	{
 		if (current_a_data > current_b->data)

@@ -3,70 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:15:16 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/17 15:16:46 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/18 15:04:38 by juliensarda      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+/*****************************************************************/
+/* i need to define the cheapest node to move to b :			 */
+/* the cheapest node will be the cheapest in a + his target cost */
+/* to get the cost i need to calculate the cost for each node in */
+/* stack_a to move to top and cost of his target in b to move to */
+/* top i can use a median to reduce the cost.					 */
+/* i need to store the cheapest in a temporary t_list 			 */
+/* check each node of a until i find the cheapest one			 */
+/*****************************************************************/
 
-int	move_cost_in_stack_a(t_list **stack, int median, int stack_size)
-{
-	t_list	*current;
-
-	current = *stack;
-	if (current->index <= median - 1)
-		return (current->index);
-	else
-		return (stack_size - current->index);
-}
-
-#include <limits.h>
-
-int	get_distance_to_target(t_list *node_a, t_list *target_b, int stack_size_b)
-{
-	int	distance_forward;
-	int	distance_backward;
-
-	distance_forward = abs(target_b->index - node_a->index);
-	distance_backward = stack_size_b - distance_forward;
-	return ((distance_forward < distance_backward) ? distance_forward : distance_backward);
-}
-
-int	move_cost_in_stack_b(t_list *node_a, t_list **stack_b, int stack_size_b)
+int	get_cost(t_list *stack, t_list *current_node)
 {
 	int	cost;
-
-	cost = get_distance_to_target(node_a, *stack_b, stack_size_b);
-	return (cost);
+	
+	cost = 0;
+	while (current_node != stack)
+	{
+		cost++;
+		current_node = current_node->next;
+	}
+	return cost;
 }
 
-t_list	*cheapest_node(t_list **stack_a, t_list **stack_b, int stack_size_a, int stack_size_b)
+t_list	*cheapest_node(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*current;
+	t_list	*current_a;
 	t_list	*cheapest;
-	int		min_cost;
-	int		cost;
-	int		median_a;
-	int		median_b;
-
-	median_a = get_median(stack_a);
-	median_b = get_median(stack_b);
-	current = *stack_a;
-	cheapest = current;
-	min_cost = INT_MAX;
-	while (current)
+	int	final_cost;
+	int	total_cost;
+	
+	current_a = *stack_a;
+	cheapest = NULL;
+	final_cost = INT_MAX;
+	while (current_a)
 	{
-		cost = move_cost_in_stack_a(stack_a, median_a, stack_size_a)
-			+ move_cost_in_stack_b(*stack_a, stack_b, stack_size_b);
-		if (cost < min_cost)
+		current_a->target = get_target(current_a->data, stack_b);
+		// i have a seg fault here 
+		// int cost_b = get_cost(*stack_b, current_a->target);
+		if (*stack_a && current_a && *stack_b && current_a->target) 
+			total_cost = get_cost(*stack_a, current_a) + get_cost(*stack_b, current_a->target);
+		if (total_cost < final_cost)
 		{
-			min_cost = cost;
-			cheapest = current;
+			final_cost = total_cost;
+			cheapest = current_a;
 		}
-		current = current->next;
+		current_a = current_a->next;
 	}
 	return (cheapest);
 }

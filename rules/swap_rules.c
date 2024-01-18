@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_rules.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:59:26 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/04 10:47:02 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/18 13:54:43 by juliensarda      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	swap(t_list **stack)
 	t_list	*head;
 	t_list	*next;
 	int		tmp_val;
-	int		tmp_index;
 
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
@@ -26,11 +25,8 @@ static int	swap(t_list **stack)
 	if (!head && !next)
 		error_message("Error", stack);
 	tmp_val = head->data;
-	tmp_index = head->index;
 	head->data = next->data;
-	head->index = next->index;
 	next->data = tmp_val;
-	next->index = tmp_index;
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/17 15:31:54 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/18 13:53:50 by juliensarda      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_list
 	int				data;
 	int				index;
 	struct s_list	*next;
+	struct s_list	*target;
 }					t_list;
 
 typedef enum s_bool
@@ -52,11 +53,15 @@ t_list				*ft_lstnew(int value);
 void				error_message(char *message, t_list **stack);
 void				args_parsing(t_list **stack, int argc, char **argv);
 t_bool				is_sorted(t_list *stack_a);
+t_list				*get_target(int current_a_data, t_list **stack_b);
+
 int					get_max(t_list *stack);
 int					get_min(t_list *stack);
+
 int					get_median(t_list **stack);
-void				current_index(t_list **stack);
-t_list				*get_target(int current_a_data, t_list **stack_b);
+
+// cost
+t_list	*cheapest_node(t_list **stack_a, t_list **stack_b);
 
 // free function
 void				clear_list(t_list **stack);
@@ -68,8 +73,7 @@ void				free_args(int argc, t_list **stack, char **args,
 // sort function
 void				sort_3(t_list **stack_a);
 void				sort(t_list **stack_a, t_list **stack_b);
-void				current_index(t_list **stack);
-t_list				*cheapest_node(t_list **stack_a, t_list **stack_b, int stack_size_a, int stack_b_size);
+
 // test need to remove it
 void				print_stack(t_list *stack);
 

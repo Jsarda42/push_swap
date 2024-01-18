@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:35:02 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/17 11:54:16 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/18 13:29:03 by juliensarda      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,4 @@ int	get_median(t_list **stack)
 	int	median;
 
 	return (median = ((ft_lstsize(*stack) / 2) + (ft_lstsize(*stack) % 2)));
-}
-
-void	current_index(t_list **stack)
-{
-	t_list	*current;
-
-	current = *stack;
-	current->index = 0;
-	while (current)
-	{
-		if (current->next)
-			current->next->index = current->index + 1;
-		current = current->next;
-	}
 }
