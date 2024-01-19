@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_target.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:07:21 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/18 14:34:05 by juliensarda      ###   ########.fr       */
+/*   Updated: 2024/01/19 14:07:37 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_list	*get_max_target(t_list *stack)
+{
+	t_list	*max;
+
+	max = stack;
+	while (stack)
+	{
+		if (stack > max)
+			max = stack;
+		stack = stack->next;
+	}
+	return (max);
+}
 
 t_list	*get_target(int current_a_data, t_list **stack_b)
 {
@@ -34,5 +48,7 @@ t_list	*get_target(int current_a_data, t_list **stack_b)
 			}
 		current_b = current_b->next;
 	}
+	if (!target)
+		target = get_max_target(*stack_b);
 	return (target);
 }

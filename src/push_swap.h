@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliensarda <juliensarda@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/18 13:53:50 by juliensarda      ###   ########.fr       */
+/*   Updated: 2024/01/19 14:12:56 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# ifndef DEBUGG
+#  define DEBUG 0
+# endif
 
 # include "../libft/libft.h"
 # include <limits.h>
@@ -20,6 +24,8 @@ typedef struct s_list
 {
 	int				data;
 	int				index;
+	int				pos_a;
+	int				pos_b;
 	struct s_list	*next;
 	struct s_list	*target;
 }					t_list;
@@ -54,6 +60,7 @@ void				error_message(char *message, t_list **stack);
 void				args_parsing(t_list **stack, int argc, char **argv);
 t_bool				is_sorted(t_list *stack_a);
 t_list				*get_target(int current_a_data, t_list **stack_b);
+t_bool				way_to_move(t_list **stack, int current_node_pos);
 
 int					get_max(t_list *stack);
 int					get_min(t_list *stack);
@@ -61,7 +68,7 @@ int					get_min(t_list *stack);
 int					get_median(t_list **stack);
 
 // cost
-t_list	*cheapest_node(t_list **stack_a, t_list **stack_b);
+t_list				*cheapest_node(t_list **stack_a, t_list **stack_b);
 
 // free function
 void				clear_list(t_list **stack);
