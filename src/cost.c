@@ -6,21 +6,11 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:15:16 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/19 14:00:05 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/22 15:15:14 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*****************************************************************/
-/* i need to define the cheapest node to move to b :				*/
-/* the cheapest node will be the cheapest in a + his target cost */
-/* to get the cost i need to calculate the cost for each node in */
-/* stack_a to move to top and cost of his target in b to move to */
-/* top i can use a median to reduce the cost.						*/
-/* i need to store the cheapest in a temporary t_list 				*/
-/* check each node of a until i find the cheapest one				*/
-/*****************************************************************/
 
 int	get_node_position(t_list *stack, t_list *current_node)
 {
@@ -36,7 +26,7 @@ int	get_node_position(t_list *stack, t_list *current_node)
 	}
 	return (pos);
 }
-/* if the position of the node is smaller than the median we move top else we move bottom*/
+
 t_bool	way_to_move(t_list **stack, int current_node_pos)
 {
 	int	median;
@@ -47,10 +37,6 @@ t_bool	way_to_move(t_list **stack, int current_node_pos)
 	return (false);
 }
 
-/*now to get the cost:
-	if we are under the median we do the len - the current_node->node
-	poistion - 1 and if we are after the median we do the len
-		- current_node->position */
 int	get_cost(t_list **stack, int current_node_pos)
 {
 	int	cost;

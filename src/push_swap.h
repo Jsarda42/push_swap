@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/19 14:12:56 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/22 09:57:16 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,5 @@ void				free_args(int argc, t_list **stack, char **args,
 // sort function
 void				sort_3(t_list **stack_a);
 void				sort(t_list **stack_a, t_list **stack_b);
-
-// test need to remove it
-void				print_stack(t_list *stack);
 
 #endif

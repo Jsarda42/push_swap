@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:07:21 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/19 14:07:37 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/22 14:55:05 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 t_list	*get_max_target(t_list *stack)
 {
 	t_list	*max;
+	t_list	*current;
 
+	current = stack;
 	max = stack;
-	while (stack)
+	while (current)
 	{
-		if (stack > max)
-			max = stack;
-		stack = stack->next;
+		if (current->data > max->data)
+			max = current;
+		current = current->next;
 	}
 	return (max);
 }
@@ -41,11 +43,13 @@ t_list	*get_target(int current_a_data, t_list **stack_b)
 	while (current_b)
 	{
 		if (current_a_data > current_b->data)
+		{
 			if (fit < current_b->data || !target)
 			{
 				fit = current_b->data;
 				target = current_b;
 			}
+		}
 		current_b = current_b->next;
 	}
 	if (!target)
