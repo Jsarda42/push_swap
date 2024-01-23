@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:48:39 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/22 15:13:24 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/23 09:28:12 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sort_3(t_list **stack_a)
 {
 	int	biggest;
 
-	biggest = get_min(*stack_a);
+	biggest = get_max(*stack_a);
 	if ((*stack_a)->data == biggest)
 		ra(stack_a);
 	else if ((*stack_a)->next->data == biggest)

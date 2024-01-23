@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:07:21 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/22 14:55:05 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/23 13:31:40 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,48 @@ t_list	*get_target(int current_a_data, t_list **stack_b)
 	}
 	if (!target)
 		target = get_max_target(*stack_b);
+	return (target);
+}
+
+t_list	*get_min_target(t_list *stack)
+{
+	t_list	*min;
+
+	min = stack;
+	while (stack)
+	{
+		if (stack->data < min->data)
+			min = stack;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+t_list	*get_target_closest_bigger(int current_a_data, t_list **stack)
+{
+	t_list	*current;
+	t_list	*target;
+	int		fit;
+
+	target = NULL;
+	current = *stack;
+	if (current)
+		fit = current->data;
+	else
+		fit = 0;
+	while (current)
+	{
+		if (current_a_data < current->data)
+		{
+			if (fit > current->data || !target)
+			{
+				fit = current->data;
+				target = current;
+			}
+		}
+		current = current->next;
+	}
+	if (!target)
+		target = get_min_target(*stack);
 	return (target);
 }

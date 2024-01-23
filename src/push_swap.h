@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/22 09:57:16 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/23 14:59:41 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,13 @@ void				args_parsing(t_list **stack, int argc, char **argv);
 t_bool				is_sorted(t_list *stack_a);
 t_list				*get_target(int current_a_data, t_list **stack_b);
 t_bool				way_to_move(t_list **stack, int current_node_pos);
-
+t_list				*get_min_target(t_list *stack);
+t_list				*get_target_closest_bigger(int current_a_data,
+						t_list **stack);
 int					get_max(t_list *stack);
 int					get_min(t_list *stack);
-
 int					get_median(t_list **stack);
+int					get_node_position(t_list *stack, t_list *current_node);
 
 // cost
 t_list				*cheapest_node(t_list **stack_a, t_list **stack_b);
@@ -80,5 +82,15 @@ void				free_args(int argc, t_list **stack, char **args,
 // sort function
 void				sort_3(t_list **stack_a);
 void				sort(t_list **stack_a, t_list **stack_b);
+
+// both rotation
+void				both_rotate_reverse(t_list **stack_a, t_list **stack_b,
+						t_list *cheapest);
+void				normal_rotation(t_list **stack_a, t_list **stack_b);
+void				both_rotate(t_list **stack_a, t_list **stack_b,
+						t_list *cheapest);
+// push to stack
+void				push_best_to_b(t_list **stack_a, t_list **stack_b);
+void				push_back_to_a(t_list **stack_a, t_list **stack_b);
 
 #endif
