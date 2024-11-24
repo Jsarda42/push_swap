@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   message.c                                          :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 09:21:16 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/26 09:38:18 by jsarda           ###   ########.fr       */
+/*   Created: 2024/01/26 09:07:09 by jsarda            #+#    #+#             */
+/*   Updated: 2024/01/26 12:26:48 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-void	error_message(char *message, t_list **stack)
+t_bool	is_valid_int(char *arg)
 {
-	ft_putendl_fd(message, 1);
-	if (stack)
-		clear_list(stack);
-	exit(EXIT_FAILURE);
+	int			i;
+	long long	num;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (!ft_isdigit(arg[i])
+			&& arg[i] != ' ' && !(arg[i] == '+' || arg[i] == '-'))
+			return (false);
+		i++;
+	}
+	num = ft_atocoi(arg);
+	if (num > INT_MAX || num < INT_MIN)
+		return (false);
+	arg++;
+	return (true);
 }

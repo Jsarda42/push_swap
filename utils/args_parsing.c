@@ -6,36 +6,28 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 10:17:07 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/11 13:35:54 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/26 10:06:54 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-static t_bool	is_valid_int(char *arg)
+int	ft_issign(int c)
 {
-	int		i;
-	long	num;
-
-	i = 0;
-	if (arg[i] == '+' || arg[i] == '-')
-		i++;
-	while (arg[i])
-	{
-		if (arg[i] == ' ')
-			i++;
-		if (!ft_isdigit(arg[i]))
-			return (false);
-		i++;
-	}
-	num = ft_atocoi(arg);
-	if (num > INT_MAX || num < INT_MIN)
-		return (false);
-	arg++;
-	return (true);
+	return (c == 43 || c == 45);
 }
 
-static t_bool	is_duplicate(char **argv)
+int	ft_issign_or_space(int c)
+{
+	return (c == 43 || c == 45 || (c >= 9 && c <= 13) || c == 32);
+}
+
+static int	ft_isspace(int c)
+{
+	return (c == 32 || c == 9);
+}
+
+t_bool	is_duplicate(char **argv)
 {
 	int	i;
 	int	j;
@@ -64,30 +56,31 @@ static t_bool	is_duplicate(char **argv)
 	return (false);
 }
 
-void	args_parsing(t_list **stack, int argc, char **argv)
+t_bool	args_parsing(char **argv)
 {
-	char	**args;
-	int		i;
+	int	i;
+	int	j;
+	int	space;
 
-	i = 0;
-	if (argc < 2)
-		error_message("Error : Arguments need to be atleast two.", stack);
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else
 	{
-		i = 1;
-		args = argv;
+		i = 0;
+		while (argv[++i])
+		{
+			j = -1;
+			space = 0;
+			while (argv[i][++j])
+			{
+				if (ft_issign_or_space(argv[i][j]))
+					space++;
+				if ((!ft_isdigit(argv[i][j]) && !ft_issign_or_space(argv[i][j]))
+					|| (ft_isdigit(argv[i][j]) && ft_issign(argv[i][j + 1]))
+					|| (ft_issign(argv[i][j]) && ft_issign(argv[i][j + 1]))
+					|| (ft_issign(argv[i][j]) && ft_isspace(argv[i][j + 1])))
+					return (false);
+			}
+			if (space == j)
+				return (false);
+		}
 	}
-	while (args[i])
-	{
-		if (is_duplicate(args))
-			free_args(argc, stack, args, "Error : Duplicate numbers detected.");
-		if (!is_valid_int(args[i]))
-			free_args(argc, stack, args,
-				"Error : The argument is not a valid integer.");
-		i++;
-	}
-	if (argc == 2)
-		ft_free(args);
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:41:20 by jsarda            #+#    #+#             */
-/*   Updated: 2023/11/17 08:50:29 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/25 14:58:27 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	**split(char const *s, char c, char **res, size_t words_count)
 			j++;
 		i++;
 	}
-	res[i] = 0;
+	res[i] = NULL;
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:36:33 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/23 14:59:41 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/26 10:47:30 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_list				*ft_lstnew(int value);
 
 // utils
 void				error_message(char *message, t_list **stack);
-void				args_parsing(t_list **stack, int argc, char **argv);
+t_bool				args_parsing(char **argv);
 t_bool				is_sorted(t_list *stack_a);
 t_list				*get_target(int current_a_data, t_list **stack_b);
 t_bool				way_to_move(t_list **stack, int current_node_pos);
@@ -68,6 +68,8 @@ int					get_max(t_list *stack);
 int					get_min(t_list *stack);
 int					get_median(t_list **stack);
 int					get_node_position(t_list *stack, t_list *current_node);
+t_bool				is_duplicate(char **argv);
+t_bool				is_valid_int(char *arg);
 
 // cost
 t_list				*cheapest_node(t_list **stack_a, t_list **stack_b);
@@ -75,7 +77,7 @@ t_list				*cheapest_node(t_list **stack_a, t_list **stack_b);
 // free function
 void				clear_list(t_list **stack);
 void				ft_free(char **str);
-void				free_stack(t_list **stack);
+void				free_stack(t_list **stack_a, t_list **stack_b);
 void				free_args(int argc, t_list **stack, char **args,
 						char *message);
 

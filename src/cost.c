@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:15:16 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/23 15:02:13 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/26 08:29:16 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_bool	way_to_move(t_list **stack, int current_node_pos)
 	return (false);
 }
 
-int	get_cost(t_list **stack, int current_node_pos)
+static int	get_cost(t_list **stack, int current_node_pos)
 {
 	int	cost;
 	int	len;

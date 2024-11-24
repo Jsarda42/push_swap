@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:41:14 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/04 13:53:05 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/26 12:20:51 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,29 @@ static const char	*skip_whitespace(const char *str)
 	return (str);
 }
 
-static long	ft_atoi(const char *str, int sign)
+static long long	ft_atoi(const char *str, int sign)
 {
-	long	number;
+	long long	number;
 
 	number = 0;
 	while (ft_isdigit(*str))
 	{
-		if (number > (INT_MAX - (*str - '0')) / 10)
-			return (2147483648);
+		if (number > (LLONG_MAX - (*str - '0')) / 10)
+		{
+			if (sign == 1)
+				return (LLONG_MAX);
+			else
+				return (LLONG_MIN);
+		}
 		number = (number * 10) + (*str - '0');
 		str++;
 	}
 	return (number * sign);
 }
 
-long	ft_atocoi(const char *str)
+long long	ft_atocoi(const char *str)
 {
-	long	sign;
+	long long	sign;
 
 	sign = 1;
 	str = skip_whitespace(str);

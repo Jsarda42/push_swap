@@ -6,7 +6,7 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:15:57 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/04 12:17:10 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/26 09:38:57 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,27 @@ void	ft_free(char **str)
 	free(str);
 }
 
-void	free_stack(t_list **stack)
+void	free_stack(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*head;
 	t_list	*tmp;
 
-	head = *stack;
+	head = *stack_a;
 	while (head)
 	{
 		tmp = head;
 		head = head->next;
 		free(tmp);
 	}
-	free(stack);
+	free(stack_a);
+	head = *stack_b;
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+	free(stack_b);
 }
 
 void	free_args(int argc, t_list **stack, char **args, char *message)

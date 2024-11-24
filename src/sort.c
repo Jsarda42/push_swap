@@ -6,13 +6,13 @@
 /*   By: jsarda <jsarda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:27:59 by jsarda            #+#    #+#             */
-/*   Updated: 2024/01/23 16:52:59 by jsarda           ###   ########.fr       */
+/*   Updated: 2024/01/26 08:31:10 by jsarda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	final_rotation(t_list **stack_a)
+static void	final_rotation(t_list **stack_a)
 {
 	t_list	*min;
 
